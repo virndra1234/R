@@ -1,0 +1,34 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import './App.css';
+
+function App() {
+  const [file, setFile] = useState(null);
+  const [skills, setSkills] = useState([]);
+
+  const handleFileChange = (e) => setFile(e.target.files[0]);
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await axios.post('https://your-backend-url.com/extract_skills', formData);
+    setSkills(response.data.skills);
+  };
+
+  return (
+    <div className="App">
+      <h1>Resume Skill Extractor</h1>
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleUpload}>Upload & Extract</button>
+
+      <div className="skills-container">
+        {skills.map((skill, idx) => (
+          <span key={idx} className="skill-tag">{skill}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
