@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  padding: 2rem;
+}
+.skill-tag {
+  background-color: #f1f1f1;
+  color: #333;
+  margin: 5px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
